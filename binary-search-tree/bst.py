@@ -12,6 +12,7 @@ class BST_Node:
             self.right.preorder()
 
     def insert(self, new_val):
+        # Duplicates are not wanted
         if self.value != new_val:
             if new_val < self.value:
                 if self.left:
@@ -23,6 +24,8 @@ class BST_Node:
                     self.right.insert(new_val)
                 else:
                     self.right = BST_Node(new_val)
+
+# Container tree class
 
 
 class BST:
