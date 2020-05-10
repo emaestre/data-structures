@@ -5,7 +5,7 @@ class BST_Node:
         self.right = None
 
     def preorder(self):
-        print(self.value)
+        print(self.value, end=' ')
         if self.left:
             self.left.preorder()
         if self.right:
@@ -25,9 +25,20 @@ class BST_Node:
                 else:
                     self.right = BST_Node(new_val)
 
+    def search(self, element):
+        if self.value == element:
+            return True
+
+        if element < self.value and self.left:
+            return self.left.search(element)
+
+        if element > self.value and self.right:
+            return self.right.search(element)
+
+        return False
+
+
 # Container tree class
-
-
 class BST:
     def __init__(self):
         self.root = None
@@ -41,6 +52,13 @@ class BST:
     def preorder(self):
         if self.root:
             self.root.preorder()
+        print()
+
+    def search(self, element):
+        if self.root:
+            return self.root.search(element)
+
+        return False
 
 
 if __name__ == "__main__":
@@ -52,3 +70,6 @@ if __name__ == "__main__":
     tree.insert(1)
     tree.insert(2)
     tree.preorder()
+    print(tree.search(10))
+    print(tree.search(6))
+    print(tree.search(2))
